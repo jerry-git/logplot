@@ -1,0 +1,11 @@
+[paths]
+source = src/logplot
+
+[run]
+branch = True
+source = logplot
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
