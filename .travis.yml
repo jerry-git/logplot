@@ -1,0 +1,36 @@
+sudo: false
+language: python
+
+install:
+- pip install -r requirements-dev.txt
+
+stages:
+- test
+- name: deploy
+  if: tag IS present
+jobs:
+  include:
+  - python: 3.5
+    env: TOXENV=py35
+  - python: 3.6
+    env: TOXENV=py36
+  - python: 3.7
+    env: TOXENV=py37
+    dist: xenial
+    sudo: true
+  - stage: deploy
+    python: 3.6
+    script: skip
+    before_install: skip
+    install: skip
+    deploy:
+      provider: pypi
+      user: jerry-pypi
+      password:
+        secure: add this with command: <travis encrypt "password here" --add deploy.password> after configuring travis to build this repo
+      on:
+        tags: true
+script:
+- tox
+after_success:
+- codecov

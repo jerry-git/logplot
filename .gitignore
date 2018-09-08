@@ -1,0 +1,23 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Coverage
+.coverage
+coverage.xml
+
+#tox
+.tox/*
+
+#pytest
+.pytest_cache/*
+
+# Misc
+.idea/*
+dist/*
+src/logplot.egg-info/*
+.cache/*
+*.DS_Store
+.eggs/*
+tmp/*

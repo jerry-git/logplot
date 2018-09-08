@@ -1,0 +1,10 @@
+entries:
+  - identifier: 'ID1'
+    priority: 1
+
+  - identifier: 'ID2'
+    priority: 2
+
+  - identifier: 'ID3'
+    priority: 3
+

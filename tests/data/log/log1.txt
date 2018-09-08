@@ -1,0 +1,20 @@
+not interesting
+not interesting
+not interesting
+not interesting
+STATE1
+not interesting
+not interesting
+STATE2
+not interesting
+not interesting
+not interesting
+STATE3
+not interesting
+STATE4
+not interesting
+STATE1
+STATE2
+foo
+foo
+bar
