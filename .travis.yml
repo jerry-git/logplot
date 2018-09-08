@@ -1,9 +1,7 @@
 sudo: false
 language: python
-
 install:
 - pip install -r requirements-dev.txt
-
 stages:
 - test
 - name: deploy
@@ -26,10 +24,11 @@ jobs:
     deploy:
       provider: pypi
       user: jerry-pypi
-      password:
-        secure: add this with command: <travis encrypt "password here" --add deploy.password> after configuring travis to build this repo
       on:
         tags: true
+      password:
+        secure: IBcWIWzNB8WvPho+9B/zJWjxmLjt+L9URTODyPSyskxGcRaMmjHJ7J2ajQ47SuNa866UB/efHnIpCAXWDwsypNlHRa9+IAvh6Dj+33cwXPnFS48shZbtx80xz5KB6du+aGRQDrDkXze6grQeKEGstlL7tTk/ovys03paoGVwm4Z6o+NilX/3pLaML/i9FIaa+YZrrz8SIQtlIpgAnOb+7Yg5kuvpXC89bmTQc4J3FU0fF/FmgmQ+9qG/OcD3NP62rhSf+BmcRXPVERdmYPm61c3ifMmP0pVmphsulGCTb7vkhVyvyLnN+4EpRndLfRI1tklAPPA3rF+EaSaHK3u7Ch334YTfPQjSL8nZzqcGHqMt/S9zVzMddB0JeHLxIIhE2Ty8JWwnAuY8QADkmMw9+XqoZZ0gBlJ6rIIUSMhSE8YRQfAnRpxe9XwJRZEhCvB3qcuDIgFLswGJucHMeSvqk2pGGD9jS3x+5AO/b25y4gCYN4/a64fbGB0hfeMcFA5Th+ITn/Mbbs71WLZSiefUhIy2v2kNaujrlDUyNgmA6/iif5n1QN+95PnM07PrCBQpLg6awT62neiBZ2bk1O1OO+7rwOJvWX/2otvxv29Wzn+67J6U5Fr4tMCS+qWUgku6xv78ZcL/M+VCdY6/kF/GTB9olnNIsCZbp1jtU3Qmv90=
+
 script:
 - tox
 after_success:
