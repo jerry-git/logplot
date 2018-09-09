@@ -2,7 +2,7 @@ sudo: false
 language: python
 install:
 - pip install -r requirements-dev.txt
-- pip install codecov
+
 stages:
 - test
 - name: deploy
@@ -10,11 +10,11 @@ stages:
 jobs:
   include:
   - python: 3.5
-    env: TOXENV=py35
+    env: TOXENV=py35 RUN_CODECOV=1
   - python: 3.6
-    env: TOXENV=py36
+    env: TOXENV=py36 RUN_CODECOV=1
   - python: 3.7
-    env: TOXENV=py37
+    env: TOXENV=py37 RUN_CODECOV=1
     dist: xenial
     sudo: true
   - stage: deploy
@@ -33,4 +33,8 @@ jobs:
 script:
 - tox
 after_success:
-- codecov
+- |
+  if [[ "$RUN_CODECOV" == 1 ]]; then
+    pip install codecov
+    codecov
+  fi
