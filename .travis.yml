@@ -17,6 +17,8 @@ jobs:
     env: TOXENV=py37 RUN_CODECOV=1
     dist: xenial
     sudo: true
+  - python: 3.6
+    env: TOXENV=lint
   - stage: deploy
     python: 3.6
     script: skip
