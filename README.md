@@ -4,4 +4,4 @@
 [![codecov](https://codecov.io/gh/jerry-git/logplot/branch/master/graph/badge.svg)](https://codecov.io/gh/jerry-git/logplot)
 
 
-> WIP: hold your horses boi 🐎
+> WIP: hold your horses boi
