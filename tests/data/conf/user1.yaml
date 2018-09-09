@@ -1,10 +1,11 @@
 entries:
   - identifier: 'ID1'
-    priority: 1
+    value: 1
+    initial_state: true
 
   - identifier: 'ID2'
-    priority: 2
+    value: 2
 
   - identifier: 'ID3'
-    priority: 3
+    value: 3
 
