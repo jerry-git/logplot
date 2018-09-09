@@ -7,19 +7,26 @@ import numpy as np
 
 
 class Plot:
-    def __init__(self, entries, special_entries, log_path, log_open_cmd):
+    def __init__(self, entries, special_entries, log_path, conf):
         self._entries = entries
         self._special_entries = special_entries
         self._log_path = log_path
-        self._log_open_cmd = log_open_cmd
+        self._conf = conf
         self._initialise()
         plt.show()
 
     def _initialise(self):
-        x = [e.line_number for e in self._entries]
-        y = [e.conf_entry.priority for e in self._entries]
         fig, ax = plt.subplots()  # TODO: configurability
-        ax.plot(x, y, "-o", picker=5)  # TODO: configurability
+        x, y = [], []
+        for entry in self._entries:
+            if entry.conf_entry.initial_state:
+                ax.plot(x, y, "-o", picker=5)  # TODO: configurability
+                x, y = [], []
+            x.append(entry.line_number)
+            y.append(entry.conf_entry.value)
+
+        ax.plot(x, y, "-o", picker=5)
+
         fig.canvas.callbacks.connect("pick_event", self._data_point_click_callback)
 
     def _data_point_click_callback(self, event):
@@ -28,11 +35,12 @@ class Plot:
         self._open_log_viewer(line_number=x_val)
 
     def _open_log_viewer(self, line_number=None):
-        if self._log_open_cmd:
+        cmd = self._conf.general.log_open_cmd
+        if cmd:
             formatter = dict(path=self._log_path)
-            if line_number and "line_number" in self._log_open_cmd:
+            if line_number and "line_number" in cmd:
                 formatter.update(dict(line_number=line_number))
-            cmd = self._log_open_cmd.format(**formatter)
+            cmd = cmd.format(**formatter)
             subprocess.Popen(cmd.split())
         else:  # Rely on the default program of the OS
             if sys.platform == "win32":

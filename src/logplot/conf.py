@@ -6,8 +6,9 @@ import yaml
 General = namedtuple("General", ["log_open_cmd"])
 General.__new__.__defaults__ = (None,) * len(General._fields)
 
-ConfEntry = namedtuple("ConfEntry", ["identifier", "priority", "label"])
-ConfEntry.__new__.__defaults__ = (None,)  # label is optional
+ConfEntry = namedtuple("ConfEntry", ["identifier", "value", "label", "initial_state"])
+# stuff after value are optional
+ConfEntry.__new__.__defaults__ = (None, None)
 
 SpecialConfEntry = namedtuple("SpecialConfEntry", ["identifier", "label", "regex"])
 SpecialConfEntry.__new__.__defaults__ = (None,) * len(SpecialConfEntry._fields)

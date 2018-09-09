@@ -26,7 +26,7 @@ def log_plot(log_path, config_path):
         entries=entries,
         special_entries=special_entries,
         log_path=os.path.abspath(log_path),
-        log_open_cmd=config.general.log_open_cmd,
+        conf=config,
     )
 
 
