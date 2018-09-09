@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import shlex
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -47,7 +48,7 @@ class Plot:
             if line_number and "line_number" in cmd:
                 formatter.update(dict(line_number=line_number))
             cmd = cmd.format(**formatter)
-            subprocess.Popen(cmd.split(), shell=shell)
+            subprocess.Popen(shlex.split(cmd), shell=shell)
         else:  # Rely on the default program of the OS
             if sys.platform == "win32":
                 os.startfile(self._log_path)
