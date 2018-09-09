@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # Coverage
-.coverage
+.coverage*
 coverage.xml
 
 #tox
@@ -21,3 +21,4 @@ src/logplot.egg-info/*
 *.DS_Store
 .eggs/*
 tmp/*
+.python-version
