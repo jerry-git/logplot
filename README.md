@@ -30,5 +30,7 @@ For example, this:
 yields this:
 
 <p align="center">
-  <img src="doc/examples/plot.png" alt="logo"/>
+  <img src="https://github.com/jerry-git/logplot/blob/master/doc/examples/plot.png" alt="example plot"/>
 </p>
+
+Clicking a data point in the plot opens the log file in the correct line number in the editor defined in the configuration file. If the `log_open_cmd` is not configured, the log will be opened with a default program defined by the OS.
