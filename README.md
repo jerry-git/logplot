@@ -9,3 +9,26 @@
 
 
 > WIP: hold your horses boi
+
+
+## Installation
+    $ pip3 install logplot
+    
+## Usage
+
+### Configuration
+> TODO
+
+### Plotting logs
+
+    $ logplot path/to/log -c path/to/conf/file
+    
+For example, this:
+
+    $ logplot doc/examples/log.txt -c doc/examples/user_conf.yaml
+
+yields this:
+
+<p align="center">
+  <img src="doc/examples/plot.png" alt="logo"/>
+</p>
