@@ -41,15 +41,16 @@ class Plot:
 
     def _open_log_viewer(self, line_number=None):
         cmd = self._conf.general.log_open_cmd
+        shell = self._conf.general.shell
         if cmd:
             formatter = dict(path=self._log_path)
             if line_number and "line_number" in cmd:
                 formatter.update(dict(line_number=line_number))
             cmd = cmd.format(**formatter)
-            subprocess.Popen(cmd.split())
+            subprocess.Popen(cmd.split(), shell=shell)
         else:  # Rely on the default program of the OS
             if sys.platform == "win32":
                 os.startfile(self._log_path)
             else:
                 opener = "open" if sys.platform == "darwin" else "xdg-open"
-                subprocess.Popen([opener, self._log_path])
+                subprocess.Popen([opener, self._log_path], shell=shell)

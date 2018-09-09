@@ -4,7 +4,7 @@ import yaml
 
 
 General = namedtuple(
-    "General", ["log_open_cmd", "default_entry_style", "click_hit_tolerance"]
+    "General", ["log_open_cmd", "default_entry_style", "click_hit_tolerance", "shell"]
 )
 General.__new__.__defaults__ = (None,) * len(General._fields)
 
