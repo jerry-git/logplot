@@ -1,0 +1,100 @@
+2000-01-01T10:29:00 not interesting
+2000-01-01T11:48:00 not interesting
+2000-01-01T12:25:00 STATE1 something
+2000-01-01T13:43:00 not interesting
+2000-01-01T14:47:00 not interesting
+2000-01-01T15:23:00 STATE2 foo bar
+2000-01-01T16:46:00 not interesting
+2000-01-01T17:59:00 STATE3
+2000-01-01T18:13:00 not interesting
+2000-01-01T19:54:00 not interesting
+2000-01-01T20:51:00 not interesting
+2000-01-01T21:23:00 not interesting
+2000-01-01T22:55:00 ERROR XYZ
+2000-01-01T23:17:00 not interesting
+2000-01-02T00:20:00 STATE4
+2000-01-02T01:00:00 not interesting
+2000-01-02T02:52:00 not interesting
+2000-01-02T03:09:00 not interesting
+2000-01-02T04:47:00 not interesting
+2000-01-02T05:00:00 not interesting
+2000-01-02T06:11:00 not interesting
+2000-01-02T07:31:00 not interesting
+2000-01-02T08:36:00 not interesting
+2000-01-02T09:58:00 not interesting
+2000-01-02T10:01:00 STATE1
+2000-01-02T11:50:00 STATE2
+2000-01-02T12:07:00 not interesting
+2000-01-02T13:58:00 not interesting
+2000-01-02T14:49:00 not interesting
+2000-01-02T15:16:00 STATE3
+2000-01-02T16:32:00 STATE4
+2000-01-02T17:26:00 STATE5
+2000-01-02T18:05:00 not interesting
+2000-01-02T19:19:00 not interesting
+2000-01-02T20:44:00 not interesting
+2000-01-02T21:05:00 not interesting
+2000-01-02T22:32:00 not interesting
+2000-01-02T23:37:00 not interesting
+2000-01-03T00:21:00 not interesting
+2000-01-03T01:11:00 ERROR 123
+2000-01-03T02:36:00 not interesting
+2000-01-03T03:23:00 not interesting
+2000-01-03T04:47:00 not interesting
+2000-01-03T05:25:00 not interesting
+2000-01-03T06:13:00 not interesting
+2000-01-03T07:41:00 not interesting
+2000-01-03T08:51:00 not interesting
+2000-01-03T09:55:00 not interesting
+2000-01-03T10:18:00 ERROR ABC
+2000-01-03T11:52:00 not interesting
+2000-01-03T12:29:00 not interesting
+2000-01-03T13:40:00 not interesting
+2000-01-03T14:58:00 not interesting
+2000-01-03T15:59:00 not interesting
+2000-01-03T16:35:00 not interesting
+2000-01-03T17:02:00 not interesting
+2000-01-03T18:42:00 not interesting
+2000-01-03T19:09:00 not interesting
+2000-01-03T20:29:00 not interesting
+2000-01-03T21:06:00 STATE1
+2000-01-03T22:20:00 not interesting
+2000-01-03T23:55:00 STATE2
+2000-01-04T00:35:00 not interesting
+2000-01-04T01:21:00 not interesting
+2000-01-04T02:32:00 not interesting
+2000-01-04T03:00:00 STATE3
+2000-01-04T04:35:00 STATE4
+2000-01-04T05:24:00 not interesting
+2000-01-04T06:03:00 not interesting
+2000-01-04T07:52:00 not interesting
+2000-01-04T08:57:00 not interesting
+2000-01-04T09:43:00 STATE5
+2000-01-04T10:06:00 not interesting
+2000-01-04T11:47:00 not interesting
+2000-01-04T12:38:00 not interesting
+2000-01-04T13:03:00 not interesting
+2000-01-04T14:44:00 SUPER_ERROR
+2000-01-04T15:45:00 not interesting
+2000-01-04T16:28:00 not interesting
+2000-01-04T17:11:00 not interesting
+2000-01-04T18:47:00 not interesting
+2000-01-04T19:38:00 not interesting
+2000-01-04T20:16:00 not interesting
+2000-01-04T21:57:00 not interesting
+2000-01-04T22:13:00 not interesting
+2000-01-04T23:22:00 STATE1
+2000-01-05T00:59:00 STATE2
+2000-01-05T01:56:00 not interesting
+2000-01-05T02:51:00 STATE_ABORT
+2000-01-05T03:21:00 not interesting
+2000-01-05T04:58:00 not interesting
+2000-01-05T05:37:00 STATE1
+2000-01-05T06:43:00 not interesting
+2000-01-05T07:19:00 not interesting
+2000-01-05T08:05:00 STATE2
+2000-01-05T10:00:00 not interesting
+2000-01-05T10:34:00 STATE3
+2000-01-05T11:08:00 STATE4
+2000-01-05T12:25:00 STATE5
+2000-01-05T13:01:00 not interesting
