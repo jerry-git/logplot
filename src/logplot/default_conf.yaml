@@ -1,5 +1,7 @@
 general:
   log_open_cmd:
+  default_entry_style: '-o'
+  click_hit_tolerance: 5
 
 
 

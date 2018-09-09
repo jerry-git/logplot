@@ -14,6 +14,6 @@ def parse(path, conf):
             for special_entry in conf.special_entries:
                 if special_entry.identifier in line:
                     special_entries.append(
-                        LogEntry(line_number=number), conf_entry=special_entry
+                        LogEntry(line_number=number, conf_entry=special_entry)
                     )
     return entries, special_entries

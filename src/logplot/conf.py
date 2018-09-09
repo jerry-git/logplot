@@ -3,15 +3,20 @@ from collections import namedtuple
 import yaml
 
 
-General = namedtuple("General", ["log_open_cmd"])
+General = namedtuple(
+    "General", ["log_open_cmd", "default_entry_style", "click_hit_tolerance"]
+)
 General.__new__.__defaults__ = (None,) * len(General._fields)
 
 ConfEntry = namedtuple("ConfEntry", ["identifier", "value", "label", "initial_state"])
 # stuff after value are optional
 ConfEntry.__new__.__defaults__ = (None, None)
 
-SpecialConfEntry = namedtuple("SpecialConfEntry", ["identifier", "label", "regex"])
-SpecialConfEntry.__new__.__defaults__ = (None,) * len(SpecialConfEntry._fields)
+SpecialConfEntry = namedtuple(
+    "SpecialConfEntry", ["identifier", "value", "label", "regex", "style"]
+)
+# stuff after value are optional
+SpecialConfEntry.__new__.__defaults__ = (None, None, None)
 
 Conf = namedtuple("Conf", ["general", "entries", "special_entries"])
 

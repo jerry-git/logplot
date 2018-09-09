@@ -16,18 +16,23 @@ class Plot:
         plt.show()
 
     def _initialise(self):
-        fig, ax = plt.subplots()  # TODO: configurability
+        fig, ax = plt.subplots()
+        fig.canvas.callbacks.connect("pick_event", self._data_point_click_callback)
         x, y = [], []
+        default_style = self._conf.general.default_entry_style
+        pick = self._conf.general.click_hit_tolerance
+
         for entry in self._entries:
             if entry.conf_entry.initial_state:
-                ax.plot(x, y, "-o", picker=5)  # TODO: configurability
+                ax.plot(x, y, default_style, picker=pick)
                 x, y = [], []
             x.append(entry.line_number)
             y.append(entry.conf_entry.value)
+        ax.plot(x, y, default_style, picker=pick)
 
-        ax.plot(x, y, "-o", picker=5)
-
-        fig.canvas.callbacks.connect("pick_event", self._data_point_click_callback)
+        for entry in self._special_entries:
+            style = entry.conf_entry.style or default_style
+            ax.plot(entry.line_number, entry.conf_entry.value, style, picker=pick)
 
     def _data_point_click_callback(self, event):
         x_data, y_data = event.artist.get_data()
