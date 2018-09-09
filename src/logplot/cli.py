@@ -25,7 +25,7 @@ def log_plot(log_path, config_path):
     Plot(
         entries=entries,
         special_entries=special_entries,
-        log_path=log_path,
+        log_path=os.path.abspath(log_path),
         log_open_cmd=config.general.log_open_cmd,
     )
 
@@ -39,4 +39,4 @@ def _select_user_config(conf_path):
                 "as command line argument or define the path as "
                 "LOGPLOT_CONFIG environment variable."
             )
-    return conf_path
+    return os.path.abspath(conf_path)
