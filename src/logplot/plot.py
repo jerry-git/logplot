@@ -44,10 +44,7 @@ class Plot:
         cmd = self._conf.general.log_open_cmd
         shell = self._conf.general.shell
         if cmd:
-            formatter = dict(path=self._log_path)
-            if line_number and "line_number" in cmd:
-                formatter.update(dict(line_number=line_number))
-            cmd = cmd.format(**formatter)
+            cmd = cmd.format(line_number=line_number, path=self._log_path)
             subprocess.Popen(shlex.split(cmd), shell=shell)
         else:  # Rely on the default program of the OS
             if sys.platform == "win32":
