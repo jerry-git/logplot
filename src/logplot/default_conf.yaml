@@ -1,6 +1,6 @@
 general:
   log_open_cmd:
-  shell: false  # boolean given to as shell argument to subprocess function calls (e.g Popen)
+  shell: false  # boolean given as shell argument to subprocess function calls (e.g Popen)
   default_entry_style: '-o'
   click_hit_tolerance: 5
 
