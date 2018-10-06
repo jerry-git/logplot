@@ -1,10 +1,15 @@
+from collections import defaultdict
 import os
 import subprocess
 import sys
 import shlex
 
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
+
+
+TEMP_COLOR = "black"
 
 
 class Plot:
@@ -13,32 +18,94 @@ class Plot:
         self._special_entries = special_entries
         self._log_path = log_path
         self._conf = conf
+        self._legend_mapping = {}
         self._initialise()
         plt.show()
 
     def _initialise(self):
-        fig, ax = plt.subplots()
-        fig.canvas.callbacks.connect("pick_event", self._data_point_click_callback)
+        self._fig, self._ax = plt.subplots()
+        self._fig.canvas.callbacks.connect("pick_event", self._click_callback)
         x, y = [], []
-        default_style = self._conf.general.default_entry_style
-        pick = self._conf.general.click_hit_tolerance
+        trend_mapping = defaultdict(list)
+
+        def add_line():
+            nonlocal x, y
+            if x and y:
+                line = self._ax.plot(
+                    x,
+                    y,
+                    self._conf.general.default_entry_style,
+                    picker=self._conf.general.click_hit_tolerance,
+                    zorder=-32,
+                    color=TEMP_COLOR,
+                )[0]
+                trend_mapping[str(y)].append(line)
+                x, y = [], []
 
         for entry in self._entries:
             if entry.conf_entry.initial_state:
-                ax.plot(x, y, default_style, picker=pick)
-                x, y = [], []
+                add_line()
             x.append(entry.line_number)
             y.append(entry.conf_entry.value)
-        ax.plot(x, y, default_style, picker=pick)
 
+        # last line
+        add_line()
+
+        self._add_special_entries()
+        self._create_legend(trend_mapping)
+        self._add_naming()
+
+    def _add_special_entries(self):
         for entry in self._special_entries:
-            style = entry.conf_entry.style or default_style
-            ax.plot(entry.line_number, entry.conf_entry.value, style, picker=pick)
+            style = entry.conf_entry.style or self._conf.general.default_entry_style
+            self._ax.plot(
+                entry.line_number,
+                entry.conf_entry.value,
+                style,
+                picker=self._conf.general.click_hit_tolerance,
+            )
 
-    def _data_point_click_callback(self, event):
-        x_data, y_data = event.artist.get_data()
-        x_val = np.take(x_data, event.ind)[0]
-        self._open_log_viewer(line_number=x_val)
+    def _create_legend(self, trend_mapping):
+        # shrink the plot area a bit to fit the legend outside
+        box = self._ax.get_position()
+        self._ax.set_position([box.x0, box.y0, box.width * 0.95, box.height])
+
+        legend_dummy_lines, lines_list = [], []
+        for lines in trend_mapping.values():
+            color = next(self._ax._get_lines.prop_cycler)["color"]
+            for line in lines:
+                line.set_color(color)
+
+            legend_line = Line2D([0], [0], color=color, lw=4)
+            legend_dummy_lines.append(legend_line)
+            lines_list.append(lines)
+
+        self._legend = self._ax.legend(
+            legend_dummy_lines,
+            [""] * len(legend_dummy_lines),
+            loc="center left",
+            bbox_to_anchor=(1, 0.5),
+        )
+        for idx, legend_line in enumerate(self._legend.get_lines()):
+            legend_line.set_picker(5)
+            self._legend_mapping[legend_line] = lines_list[idx]
+
+    def _add_naming(self):
+        self._fig.suptitle(self._conf.general.plot_title)
+        plt.xlabel(self._conf.general.y_axis_name)
+        plt.ylabel(self._conf.general.x_axis_name)
+
+    def _click_callback(self, event):
+        if event.artist in self._legend_mapping:  # click in legend
+            for line in self._legend_mapping[event.artist]:
+                # toggle visibility
+                line.set_visible(not line.get_visible())
+            self._fig.canvas.draw()
+        elif event.artist.get_visible():  # click in plot
+            x_data, y_data = event.artist.get_data()
+            x_val = np.take(x_data, event.ind)[0]
+            # y_val = np.take(y_data, event.ind)[0]
+            self._open_log_viewer(line_number=x_val)
 
     def _open_log_viewer(self, line_number=None):
         cmd = self._conf.general.log_open_cmd

@@ -3,3 +3,7 @@ general:
   shell: false  # boolean given to as shell argument to subprocess function calls (e.g Popen)
   default_entry_style: '-o'
   click_hit_tolerance: 5
+
+  plot_title: 'Magical Log Plot'
+  x_axis_name: 'value'
+  y_axis_name: 'line number'
