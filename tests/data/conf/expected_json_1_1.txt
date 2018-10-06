@@ -1,1 +1,1 @@
-[["default-command", null, null, null], [["ID1", 1, null, true], ["ID2", 2, null, null], ["ID3", 3, null, null]], []]
+[["default-command", null, null, null, null, null, null], [["ID1", 1, null, true], ["ID2", 2, null, null], ["ID3", 3, null, null]], []]
