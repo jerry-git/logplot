@@ -8,7 +8,9 @@
 [![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 
-> WIP: hold your horses boi
+<p align="center">
+  <img src="https://github.com/jerry-git/logplot/blob/master/doc/examples/example.gif" alt="example gif"/>
+</p>
 
 
 ## Installation
