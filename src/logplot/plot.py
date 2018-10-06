@@ -83,6 +83,7 @@ class Plot:
         self._legend = self._ax.legend(
             legend_dummy_lines,
             [""] * len(legend_dummy_lines),
+            title="trends",
             loc="center left",
             bbox_to_anchor=(1, 0.5),
         )

@@ -13,6 +13,7 @@ General = namedtuple(
         "plot_title",
         "x_axis_name",
         "y_axis_name",
+        "legend_title",
     ],
 )
 General.__new__.__defaults__ = (None,) * len(General._fields)

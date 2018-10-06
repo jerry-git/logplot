@@ -7,3 +7,4 @@ general:
   plot_title: 'Magical Log Plot'
   x_axis_name: 'value'
   y_axis_name: 'line number'
+  legend_title: 'trends'
