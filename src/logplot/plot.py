@@ -98,10 +98,14 @@ class Plot:
 
     def _click_callback(self, event):
         if event.artist in self._legend_mapping:  # click in legend
+            visible = not self._legend_mapping[event.artist][0].get_visible()
             for line in self._legend_mapping[event.artist]:
                 # toggle visibility
-                line.set_visible(not line.get_visible())
+                line.set_visible(visible)
+
+            event.artist.set_alpha(1 if visible else 0.2)
             self._fig.canvas.draw()
+
         elif event.artist.get_visible():  # click in plot
             x_data, y_data = event.artist.get_data()
             x_val = np.take(x_data, event.ind)[0]
