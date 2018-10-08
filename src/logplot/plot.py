@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 import os
 import subprocess
 import sys
@@ -70,15 +70,21 @@ class Plot:
         box = self._ax.get_position()
         self._ax.set_position([box.x0, box.y0, box.width * 0.95, box.height])
 
-        legend_dummy_lines, lines_list = [], []
-        for lines in trend_mapping.values():
+        # sort based on lines count in trends
+        # to have the trends in nice order in the legend
+        sorted_trend_items = sorted(
+            trend_mapping.items(), key=lambda item: len(item[1]), reverse=True
+        )
+        sorted_mapping = OrderedDict(sorted_trend_items)
+
+        legend_dummy_lines = []
+        for lines in sorted_mapping.values():
             color = next(self._ax._get_lines.prop_cycler)["color"]
             for line in lines:
                 line.set_color(color)
 
             legend_line = Line2D([0], [0], color=color, lw=4)
             legend_dummy_lines.append(legend_line)
-            lines_list.append(lines)
 
         self._legend = self._ax.legend(
             legend_dummy_lines,
@@ -87,9 +93,12 @@ class Plot:
             loc="center left",
             bbox_to_anchor=(1, 0.5),
         )
-        for idx, legend_line in enumerate(self._legend.get_lines()):
+
+        for legend_line, lines in zip(
+            self._legend.get_lines(), sorted_mapping.values()
+        ):
             legend_line.set_picker(5)
-            self._legend_mapping[legend_line] = lines_list[idx]
+            self._legend_mapping[legend_line] = lines
 
     def _add_naming(self):
         self._fig.suptitle(self._conf.general.plot_title)
