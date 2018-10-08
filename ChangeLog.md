@@ -1,9 +1,9 @@
 # `logplot` Changelog
 
-## 1.0.3
+### 1.0.3
 Not released yet
 
-## 1.0.2
+### 1.0.2
 2018-10-08
 * Trends in nice order in the legend (#13)
 
