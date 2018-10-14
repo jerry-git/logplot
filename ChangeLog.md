@@ -1,7 +1,12 @@
 # `logplot` Changelog
 
-### 1.0.3
+### 1.0.4
 Not released yet
+
+### 1.0.3
+2018-10-14
+* Duplicate colors fix (#15)
+* Documentation updates
 
 ### 1.0.2
 2018-10-08
