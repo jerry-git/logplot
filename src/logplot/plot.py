@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
 
+from .colors import next_colour
+
 
 TEMP_COLOR = "black"
 
@@ -76,19 +78,21 @@ class Plot:
             trend_mapping.items(), key=lambda item: len(item[1]), reverse=True
         )
         sorted_mapping = OrderedDict(sorted_trend_items)
-
         legend_dummy_lines = []
+        legend_labels = []
+
         for lines in sorted_mapping.values():
-            color = next(self._ax._get_lines.prop_cycler)["color"]
+            color = next_colour()
             for line in lines:
                 line.set_color(color)
 
             legend_line = Line2D([0], [0], color=color, lw=4)
+            legend_labels.append("{}x".format(len(lines)))
             legend_dummy_lines.append(legend_line)
 
         self._legend = self._ax.legend(
             legend_dummy_lines,
-            [""] * len(legend_dummy_lines),
+            legend_labels,
             title="trends",
             loc="center left",
             bbox_to_anchor=(1, 0.5),
