@@ -58,3 +58,20 @@ Note that `log_open_cmd` has to configured to be able to open the log in the cor
 
 `logplot` will automatically identify different trends in the plotted entries. 
 You can toggle the visibility of these trends by clicking items in the legend.
+
+Here's an example of a bit bigger log which contains 100k entries, 13 different states, and 15 different trends.
+
+	$ logplot doc/examples/log_huge.txt -c doc/examples/user_conf_huge.yaml
+
+<p align="center">
+  <img src="https://github.com/jerry-git/logplot/blob/master/doc/examples/plot_huge.png" alt="example plot huge"/>
+</p>
+
+And the same with three most occuring trends filtered out.
+
+<p align="center">
+  <img src="https://github.com/jerry-git/logplot/blob/master/doc/examples/plot_huge_filtered.png" alt="example plot huge filtered"/>
+</p>
+
+
+
