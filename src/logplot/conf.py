@@ -1,6 +1,10 @@
 from collections import namedtuple
+from itertools import combinations
+import logging
 
 import yaml
+
+logger = logging.getLogger(__name__)
 
 
 General = namedtuple(
@@ -45,5 +49,12 @@ def read(default_path, user_path):
     general = General(**general)
     # Log entry specific settings only from user
     basics = [ConfEntry(**e) for e in user["entries"]]
+
+    for e1, e2 in combinations(basics, 2):
+        if e1.identifier in e2.identifier or e2.identifier in e1.identifier:
+            logger.warning(
+                "Colliding identifiers: {} {}".format(e1.identifier, e2.identifier)
+            )
+
     specials = [SpecialConfEntry(**e) for e in user.get("special-entries", [])]
     return Conf(general, basics, specials)
