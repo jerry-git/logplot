@@ -1,0 +1,32 @@
+general:
+  log_open_cmd: "/usr/local/bin/subl {path}:{line_number}"
+
+entries:
+  - identifier: 'STATE1'
+    value: 1
+    initial_state: true
+  - identifier: 'STATE2'
+    value: 2
+  - identifier: 'STATE3'
+    value: 3
+  - identifier: 'STATE4'
+    value: 4
+  - identifier: 'STATE5'
+    value: 5
+  - identifier: 'STATE6'
+    value: 6
+  - identifier: 'STATE7'
+    value: 7
+  - identifier: 'STATE8'
+    value: 8
+  - identifier: 'STATE9'
+    value: 9
+  - identifier: 'STATE_10'
+    value: 10
+  - identifier: 'STATE_11'
+    value: 11
+  - identifier: 'STATE_12'
+    value: 12
+
+  - identifier: 'STATE-1'
+    value: -1
