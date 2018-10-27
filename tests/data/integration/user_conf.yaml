@@ -30,3 +30,8 @@ entries:
 
   - identifier: 'STATE-1'
     value: -1
+
+special-entries:
+  - identifier: 'ERROR'
+    value: 0
+    style: 'r*'
