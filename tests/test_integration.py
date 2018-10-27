@@ -21,4 +21,4 @@ class TestPlotCreation:
     def test_it_plots(self, show_plot, cli_runner):
         res = cli_runner.invoke(log_plot, [LOG, "-c", CONF], catch_exceptions=False)
         assert not res.exception
-        show_plot.assert_called_once()
+        assert show_plot.call_count == 1
