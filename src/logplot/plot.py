@@ -1,8 +1,9 @@
 from collections import defaultdict, OrderedDict
 import os
+import pkg_resources
+import shlex
 import subprocess
 import sys
-import shlex
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -108,6 +109,8 @@ class Plot:
         self._fig.suptitle(self._conf.general.plot_title)
         plt.xlabel(self._conf.general.y_axis_name)
         plt.ylabel(self._conf.general.x_axis_name)
+        version = pkg_resources.get_distribution("logplot").version
+        plt.gcf().canvas.set_window_title("logplot {}".format(version))
 
     def _click_callback(self, event):
         if event.artist in self._legend_mapping:  # click in legend
